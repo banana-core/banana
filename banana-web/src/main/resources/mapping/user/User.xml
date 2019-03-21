@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.it.nemo.dao.UserDao">
+
+	<resultMap id="UserMap" type="com.it.nemo.vo.UserVO">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+		<result column="create_date" property="createDate"/>
+		<result column="create_user" property="createUser"/>
+		<result column="update_date" property="updateDate"/>
+		<result column="update_user" property="updateUser"/>
+		<result column="delete_flag" property="deleteFlag"/>
+	</resultMap>
+
+	<select id="queryUserList" resultMap="UserMap">
+		select id, name, age, create_date, create_user,
+			   update_date, update_user, delete_flag 
+		  from b_user
+		 where delete_flag = 'N'
+	</select>
+	
+</mapper>
